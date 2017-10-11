@@ -1,0 +1,6 @@
+# create application
+dotnet new web
+# add postgres driver
+dotnet add package Npgsql --version 3.2.5
+# add ef
+dotnet add package EntityFramework --version 6.1.3	

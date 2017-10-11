@@ -1,2 +1,4 @@
-FROM microsoft/aspnetcore-build:2.0.2-stretch
+FROM microsoft/dotnet:sdk
+ENV ASPNETCORE_URLS=http://0.0.0.0:5000
+EXPOSE 5000
 WORKDIR /app

@@ -11,18 +11,16 @@ services:
     ports:
       - 8080:8080
   web:
-    image: ertw/dotnet-core-dev
+    image: microsoft/aspnetcore-build:2.0.2-stretch
     volumes:
       - app-volume:/app
+
+    command: chmod -R 0777 /app
     depends_on:
       - db
     ports:
       - 8088:8088
     env_file: db-creds.env
-  dev:
-    image: ertw/alpine-dev
-    volumes:
-      - app-volume:/home/ertw/app
 
 volumes:
   app-volume:
