@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:10-alpine
+    restart: always
+    env_file: db-creds.env
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  web:
+    image: ertw/aspnetcore
+    volumes:
+      - app-volume:/app
+    depends_on:
+      - db
+    ports:
+      - 8088:8088
+    env_file: db-creds.env
+  dev:
+    image: ertw/alpine-dev
+    volumes:
+      - app-volume:/home/ertw/app
+
+volumes:
+  app-volume:
