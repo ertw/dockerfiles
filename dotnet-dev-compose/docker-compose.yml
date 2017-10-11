@@ -11,7 +11,7 @@ services:
     ports:
       - 8080:8080
   web:
-    image: ertw/aspnetcore
+    image: ertw/dotnet-core-dev
     volumes:
       - app-volume:/app
     depends_on:
