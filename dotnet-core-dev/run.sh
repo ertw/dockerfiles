@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run -it --rm -p 5000:5000 --mount source=dotnetdevcompose_app-volume,target=/app ertw/dotnet-core-dev
+docker run -it --rm -p 5000:5000 --mount type=bind,source=/home/core/passenger_roster,target=/app ertw/dotnet-core-dev

@@ -1,11 +1,11 @@
 FROM alpine:3.6
 RUN apk update
-RUN apk add vim curl git zsh wget openssh
+RUN apk add vim curl git zsh wget openssh tree
 WORKDIR /root/.vim/autoload/
 ADD https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim plug.vim
 WORKDIR /root
 ADD https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh install.sh
-ADD https://raw.githubusercontent.com/ertw/dotfiles/master/init.vim .vimrc
+RUN wget -O .vimrc https://raw.githubusercontent.com/ertw/dotfiles/master/init.vim
 RUN vim +PlugInstall +qall 
 RUN chmod +x install.sh
 RUN ./install.sh ; exit 0
