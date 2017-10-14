@@ -13,3 +13,4 @@ RUN rm .zshrc \
 	&& mkdir /root/.ssh
 RUN git clone https://github.com/ertw/dotfiles.git
 RUN /root/dotfiles/create_dotfile_links.sh
+ENV GIT_PAGER=more
