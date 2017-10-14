@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:10-alpine
+    env_file: db-creds.env
+    networks:
+      - overlay
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - overlay
+#  web:
+#    image: ertw/dotnet-core-dev
+#    volumes:
+#      - type: bind
+#        source: /home/core/passenger_roster
+#        target: /app
+#    depends_on:
+#      - db
+#    ports:
+#      - 5000:5000
+#    networks:
+#      - overlay
+#    env_file: db-creds.env
+#    deploy:
+#      restart_policy:
+#        condition: none
+
+networks:
+  overlay:
+    driver: overlay
+    attachable: true
